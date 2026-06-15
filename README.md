@@ -42,27 +42,27 @@ eggs
 
 The filename is `slug-of-title-<shortid>.md` (human-readable); `id` is the source of truth.
 
-## Prerequisites
-
-The only thing you need is [**Hermit**](https://cashapp.github.io/hermit/) — it provides
-the exact Rust, Node, and Just versions this project pins (no system installs required):
-
-```sh
-curl -fsSL https://github.com/cashapp/hermit/releases/download/stable/install.sh | bash
-```
-
 ## Getting started
 
 ```sh
-# Activate the project toolchain (adds ./bin to PATH). Optional but convenient:
-. bin/activate-hermit       # or: source bin/activate-hermit
-
-just setup                  # install JS dependencies
+git clone <repo> board && cd board
+./install.sh                # download the toolchain + install dependencies
 just dev                    # launch the desktop app (hot reload)
 ```
 
-Not activated Hermit? Every recipe still works via `./bin/just <recipe>` — the Justfile
-puts `./bin` on PATH for you.
+`./install.sh` is idempotent and self-contained: it downloads the exact Rust, Node, and
+Just versions this project pins via [**Hermit**](https://cashapp.github.io/hermit/) (no
+system installs required) and then runs `npm install`. Re-run it any time.
+
+Once installed, you can optionally activate the toolchain so `cargo`/`node`/`just` resolve
+directly:
+
+```sh
+. bin/activate-hermit       # or: source bin/activate-hermit
+```
+
+Not activated? Every recipe still works via `./bin/just <recipe>` — the Justfile puts
+`./bin` on PATH for you.
 
 ## Automation (Just)
 
