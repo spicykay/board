@@ -1,0 +1,17 @@
+[package]
+name = "board-cli"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+description = "Agent-friendly CLI over the board-core markdown store."
+
+[[bin]]
+name = "board"
+path = "src/main.rs"
+
+[dependencies]
+board-core = { workspace = true }
+serde_json = { workspace = true }
+anyhow = { workspace = true }
+clap = { version = "4", features = ["derive"] }
